@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="UTF-8" />
+    <title>LinkedIn Test</title>
+
+<style>
+	body {
+	  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	}
+
+	#chartdiv {
+	  width: 100%;
+	  height: 600px;
+	}
+</style>	
+  
+</head>
+  <body>
+
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script>
+		am4core.ready(function() {
+			am4core.useTheme(am4themes_animated);
+			var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+			chart.data = [
+			  { "sector": "Agriculture", "size": 6.6 },
+			  { "sector": "Mining and Quarrying", "size": 0.6 },
+			  { "sector": "Manufacturing", "size": 23.2 },
+			  { "sector": "Electricity and Water", "size": 2.2 },
+			  { "sector": "Construction", "size": 4.5 },
+			  { "sector": "Trade (Wholesale, Retail, Motor)", "size": 14.6 },
+			  { "sector": "Transport and Communication", "size": 9.3 },
+			  { "sector": "Finance, real estate and business services", "size": 22.5 }
+			];
+
+			// Add label
+			chart.innerRadius = 150;
+			var label = chart.seriesContainer.createChild(am4core.Label);
+			label.text = "1995";
+			label.horizontalCenter = "middle";
+			label.verticalCenter = "middle";
+			label.fontSize = 50;
+
+			// Add and configure Series
+			var pieSeries = chart.series.push(new am4charts.PieSeries());
+			pieSeries.dataFields.value = "size";
+			pieSeries.dataFields.category = "sector";
+
+		}); 
+	</script>
+	<div id="chartdiv"></div>
+  </body>
+</html>
